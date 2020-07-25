@@ -3,7 +3,6 @@ image: "noticeeverything/pipelines:latest"
 stages:
   - build
   - test
-  - deploy
 
 # to cache Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
