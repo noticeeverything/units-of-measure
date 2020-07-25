@@ -20,15 +20,17 @@ cache:
 install:
   stage: build
   script:
+    # this directory doesn't exist by default - likely has to do with how Gitlab clones the repo
+    # without this directory, transcrypt fails
     - mkdir .git/hooks
-    - ls .git
-    - touch .git/hooks/pre-comit-crypt
-    - ls .git/hooks
     - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
     - yarn install --pure-lockfile --cache-folder .yarn
 
+# Test/lint all branches except master
 test:
   stage: test
+  except:
+    - master
   script:
     - yarn lint
     - yarn test.ci
@@ -37,8 +39,13 @@ test:
 # Only deploy master
 deploy:
   stage: deploy
-  only:
-    - master
+#  only:
+#    - master
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
     - export TAG=$CI_COMMIT_REF_SLUG-prod-latest
     - yarn deploy --env=prod --awsRegion=$AWS_DEFAULT_REGION --tag=$TAG
