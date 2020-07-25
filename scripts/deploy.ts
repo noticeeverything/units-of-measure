@@ -2,7 +2,7 @@ import {cd, pwd} from 'shelljs';
 import {annotate, header, logError} from './shell-functions';
 import {Arguments, Environment} from './deploy.interfaces';
 import {Inquirer} from './inquirer';
-import deploySteps from './steps';
+import {deploySteps} from './steps';
 
 /**
  * Interactive - simply run `yarn deploy` and follow the prompts
