@@ -20,6 +20,7 @@ cache:
 install:
   stage: build
   script:
+    - mkdir .git/hooks
     - ls .git
     - touch .git/hooks/pre-comit-crypt
     - ls .git/hooks
