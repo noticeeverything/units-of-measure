@@ -20,9 +20,7 @@ cache:
 install:
   stage: build
   script:
-    - echo "$TRANSCRYPT_CIPHER"
-    - echo "$TRANSCRYPT_KEY"
-    - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
+    - transcrypt -c ${TRANSCRYPT_CIPHER} -p '${TRANSCRYPT_KEY}' -y
     - yarn install --pure-lockfile --cache-folder .yarn
 
 test:
