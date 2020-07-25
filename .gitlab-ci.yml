@@ -20,7 +20,7 @@ cache:
 install:
   stage: build
   script:
-    - git reset --hard $CI_COMMIT_REF_SLUG
+    - git reset --hard $CI_COMMIT_SHA
     - git reflog expire --expire=all --all
     - chmod 777 $CI_BUILDS_DIR
     - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
