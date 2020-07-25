@@ -20,7 +20,9 @@ cache:
 install:
   stage: build
   script:
-    - git reset --hard HEAD
+    - git reset --hard $CI_COMMIT_REF_SLUG
+    - git reflog expire --expire=all --all
+    - chmod 777 $CI_BUILDS_DIR
     - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
     - yarn install --pure-lockfile --cache-folder .yarn
 
