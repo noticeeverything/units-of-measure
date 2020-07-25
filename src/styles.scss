@@ -1,0 +1,9 @@
+a {
+  color: darken(#A5C9FF, 20%) !important;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: none;
+    color: darken(#A5C9FF, 30%) !important;
+  }
+}

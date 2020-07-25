@@ -1,0 +1,39 @@
+image: "noticeeverything/pipelines:latest"
+
+stages:
+  - build
+  - test
+  - deploy
+
+# to cache Cypress binary we use environment variables
+# to point at the folders we can list as paths in "cache" job settings
+variables:
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .yarn
+    - cache/Cypress
+
+install:
+  stage: build
+  script:
+    - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
+    - yarn install --pure-lockfile --cache-folder .yarn
+
+test:
+  stage: test
+  script:
+    - yarn lint
+    - yarn test.ci
+    - yarn e2e.ci
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - export TAG=$CI_COMMIT_REF_SLUG-prod-latest
+    - yarn deploy --env=prod --awsRegion=$AWS_DEFAULT_REGION --tag=$TAG

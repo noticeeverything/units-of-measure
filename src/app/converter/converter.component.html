@@ -1,0 +1,135 @@
+<!-- .container -->
+<div class="container pt-5 text-center">
+  <!-- Header -->
+  <h1>Easy Unit Converter</h1>
+  <p class="lead">
+    by <a href="https://noticeeverything.com" rel="noopener" target="_blank">Notice Everything
+    Creative</a>
+  </p>
+  <!-- /Header -->
+
+  <!-- Form -->
+  <form (ngSubmit)="convert()" [formGroup]="convertForm">
+    <div class="md-form input-group">
+
+      <div class="input-group-prepend">
+                <span class="input-group-text md-addon" id="material-addon1">
+                    <mdb-icon class="fad" fab icon="calculator"></mdb-icon>
+                </span>
+      </div>
+
+      <!-- From Units -->
+      <label class="sr-only" for="from">from</label>
+      <input #fromField class="form-control" formControlName="from" id="from" name="from" placeholder="From"
+             type="text">
+
+      <!-- To Units -->
+      <label class="sr-only" for="to">from</label>
+      <input #toField class="form-control" formControlName="to" id="to" name="to" placeholder="To" type="text">
+
+      <!-- Buttons -->
+      <div class="input-group-append">
+        <!-- Calculate -->
+        <button [disabled]="!convertForm.valid"
+                class="m-0 px-3 py-2"
+                color="white"
+                mdbBtn
+                mdbWavesEffect
+                size="md"
+                type="submit">
+          <mdb-icon class="fad" fab icon="sign-in-alt"></mdb-icon>
+          <span class="sr-only">calculate</span>
+        </button>
+        <!-- Clear -->
+        <button (click)="clear()"
+                [disabled]="!(convertForm.controls.from.value && convertForm.controls.from.value.length) &&
+                             !(convertForm.controls.to.value && convertForm.controls.to.value.length)"
+                class="m-0 px-3 py-2"
+                color="white"
+                mdbBtn
+                mdbWavesEffect
+                size="md"
+                type="button">
+          <mdb-icon class="fad" fab icon="ban"></mdb-icon>
+          <span class="sr-only">clear</span>
+        </button>
+        <!-- /Buttons -->
+      </div>
+    </div>
+  </form>
+  <!-- /Form -->
+
+  <!-- Results -->
+  <div *ngIf="output" class="results p-1">
+    <code>{{ output }}</code>
+  </div>
+
+  <!-- Modal Buttons -->
+  <a (click)="examplesModal.show()">examples</a>
+  &nbsp;
+  <a (click)="shortcutsModal.show()">shortcuts</a>
+
+</div>
+<!-- /.container -->
+
+<!-- ExamplesModal -->
+<div #examplesModal="mdbModal" aria-hidden="true" aria-labelledby="myBasicModalLabel" class="modal fade" mdbModal role="dialog"
+     style="overflow-y:auto" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button (click)="examplesModal.hide()" aria-label="Close" class="close pull-right"
+                type="button">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Examples</h4>
+      </div>
+      <div class="modal-body">
+        <p>From <code>75mph</code> To <code>km/h</code> -> 120.7008 km/h</p>
+        <p>From <code>3 tablespoons</code> To <code>cups</code> -> 0.18749999904898063 cu</p>
+        <p>From <code>3meters2</code> To <code>mi2</code> -> 3.8610215854244587e-7 mi2</p>
+        <p>From <code>12in^2</code> To <code>sqft</code> -> 0.00774192 sqft</p>
+        <p>From <code>1000gal</code> To <code>m3</code> -> 3.7854118 m3</p>
+        <p>From <code>0.0054%</code> To <code>ppm</code> -> 54 ppm</p>
+        <p>From <code>100tempC</code> To <code>tempF</code> -> 211.99999999999994 tempF</p>
+        <p>From <code>33mi/gal</code> To <code>km/l</code> -> 14.02974228589872 km/l</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="examplesModal.hide()" aria-label="Close" class="waves-light" color="dark" mdbBtn mdbWavesEffect
+                size="md" type="button">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ExamplesModal -->
+
+<!-- ShortcutsModal -->
+<div #shortcutsModal="mdbModal" aria-hidden="true" aria-labelledby="myBasicModalLabel" class="modal fade" mdbModal
+     role="dialog" tabindex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button (click)="shortcutsModal.hide()" aria-label="Close" class="close pull-right"
+                type="button">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="shortcuts">Keyboard Shortcuts</h4>
+      </div>
+      <div class="modal-body">
+        <div><small><code>[</code>: focus "From" field</small></div>
+        <div><small><code>]</code>: focus "To" field</small></div>
+        <div><small><code>x</code>: clear form & results</small></div>
+        <div><small><code>Enter</code>: submit form</small></div>
+        <div><small><code>shift+E</code>: show examples</small></div>
+        <div><small><code>shift+S</code>: show shortcuts</small></div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="shortcutsModal.hide()" aria-label="Close" class="waves-light" color="dark" mdbBtn mdbWavesEffect
+                size="md" type="button">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ShortcutsModal -->

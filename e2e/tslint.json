@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tslint.json",
+  "linterOptions": {
+    "exclude": [
+      "!**/*"
+    ]
+  },
+  "rules": {
+    "no-namespace": false,
+    "no-internal-module": false
+  }
+}

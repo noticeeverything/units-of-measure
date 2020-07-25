@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "inquirer",
+      "node"
+    ],
+    "target": "es2017",
+    "module": "commonjs"
+  },
+  "include": [
+    "src/deploy/deploy.ts"
+  ]
+}

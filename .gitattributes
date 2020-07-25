@@ -1,0 +1,5 @@
+#pattern  filter=crypt diff=crypt
+.npmrc filter=crypt diff=crypt
+container_start.sh filter=crypt diff=crypt
+docker-compose.yml filter=crypt diff=crypt
+scripts/steps.ts filter=crypt diff=crypt
