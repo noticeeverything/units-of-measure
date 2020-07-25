@@ -26,26 +26,10 @@ install:
     - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
     - yarn install --pure-lockfile --cache-folder .yarn
 
-# Test/lint all branches except master
+# Test/lint all branches
 test:
   stage: test
-  except:
-    - master
   script:
     - yarn lint
     - yarn test.ci
     - yarn e2e.ci
-
-# Only deploy master
-deploy:
-  stage: deploy
-#  only:
-#    - master
-  before_script:
-    - mkdir -p ~/.ssh
-    - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-    - chmod 600 ~/.ssh/id_rsa
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-  script:
-    - export TAG=$CI_COMMIT_REF_SLUG-prod-latest
-    - yarn deploy --env=prod --awsRegion=$AWS_DEFAULT_REGION --tag=$TAG

@@ -2,6 +2,7 @@ import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import * as Qty from 'js-quantities';
 import {ModalDirective} from 'angular-bootstrap-md';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'uom-converter',
@@ -24,7 +25,7 @@ export class ConverterComponent {
 
   @ViewChild('toField') toField: ElementRef;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 
   clear() {
@@ -38,7 +39,7 @@ export class ConverterComponent {
       const qty: Qty = Qty(`${this.convertForm.get('from').value}`).to(this.convertForm.get('to').value);
       this.output = qty.toString();
     } catch (e) {
-      // this.toastr.error(e.message);
+      this.toastr.error(e.message);
     }
   }
 

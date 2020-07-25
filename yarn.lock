@@ -7573,6 +7573,13 @@ ng-mocks@^10.1.1:
   resolved "https://registry.yarnpkg.com/ng-mocks/-/ng-mocks-10.1.1.tgz#913b572773c768675c5430337d0b775e9c450079"
   integrity sha512-uKu1xLMmSSDfDZN+urc3TenepFWCNNYq/XqP4NgBD4JAXzP0o2s3up/ZBVcWLYrO/cRUuJaaEbdKV0BklPzm7g==
 
+ngx-toastr@^13.0.0:
+  version "13.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-toastr/-/ngx-toastr-13.0.0.tgz#7d011117c4352d824399de2478d2aedeec5c9391"
+  integrity sha512-p/isNGkuCTCrCaUimrHzmR/OFP9u0HomkbqBJDmbIzpUNdCGILfRF6FiuJKhb7X9XQsFAKDe3MK3PejFPRCyrg==
+  dependencies:
+    tslib "^2.0.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"

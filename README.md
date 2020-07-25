@@ -2,6 +2,8 @@
 
 [![pipeline status](https://gitlab.com/NoticeEverything/units-of-measure/badges/master/pipeline.svg)](https://gitlab.com/NoticeEverything/units-of-measure/-/commits/master)
 
+[See the unit converter in action](https://unitsofmeasure.app).
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 ## Development server

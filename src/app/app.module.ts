@@ -15,6 +15,7 @@ import {
   TooltipModule,
   WavesModule
 } from 'angular-bootstrap-md';
+import {ToastrModule} from 'ngx-toastr';
 
 export const PlatformWindowToken = new InjectionToken('WINDOW');
 
@@ -40,7 +41,8 @@ export const PlatformWindowToken = new InjectionToken('WINDOW');
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NavbarModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: PlatformWindowToken, useValue: typeof window !== 'undefined' ? window : {}}
