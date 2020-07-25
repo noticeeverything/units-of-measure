@@ -3,7 +3,6 @@ image: "noticeeverything/pipelines:latest"
 stages:
   - build
   - test
-  - deploy
 
 # to cache Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
@@ -20,20 +19,16 @@ cache:
 install:
   stage: build
   script:
+    # this directory doesn't exist by default - likely has to do with how Gitlab clones the repo
+    # without this directory, transcrypt fails
+    - mkdir .git/hooks
     - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
     - yarn install --pure-lockfile --cache-folder .yarn
 
+# Test/lint all branches
 test:
   stage: test
   script:
     - yarn lint
     - yarn test.ci
     - yarn e2e.ci
-
-deploy:
-  stage: deploy
-  only:
-    - master
-  script:
-    - export TAG=$CI_COMMIT_REF_SLUG-prod-latest
-    - yarn deploy --env=prod --awsRegion=$AWS_DEFAULT_REGION --tag=$TAG

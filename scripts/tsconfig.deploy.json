@@ -9,6 +9,7 @@
     "module": "commonjs"
   },
   "include": [
-    "src/deploy/deploy.ts"
+    "deploy.ts",
+    "steps.ts"
   ]
 }
