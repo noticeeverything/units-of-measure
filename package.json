@@ -1,6 +1,6 @@
 {
   "name": "units-of-measure",
-  "version": "0.0.4",
+  "version": "0.0.2",
   "scripts": {
     "build": "ng build",
     "build.prod": "ng run units-of-measure:prerender",
