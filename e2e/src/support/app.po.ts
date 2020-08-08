@@ -1,1 +1,9 @@
-export const getGreeting = () => cy.get('h1');
+export const getTitle = () => cy.get('h1');
+export const getByline = () => cy.get('p.lead');
+export const getFromField = () => cy.get('#from');
+export const getToField = () => cy.get('#to');
+export const getBody = () => cy.get('body');
+export const getModalTitle = () => cy.get('.modal-title');
+export const getToastMessage = () => cy.get('.toast-message');
+export const getResults = () => cy.get('.results');
+export const getSubmitButton = () => cy.get('button[type="submit"]');

@@ -95,10 +95,10 @@ describe('ConverterComponent', () => {
     });
 
     it('fails to convert nonexistent units', () => {
-      spectator.typeInElement('m3', fromElem);
-      spectator.typeInElement('m', toElem);
+      spectator.typeInElement('g', fromElem);
+      spectator.typeInElement('fake', toElem);
       submitForm();
-      expect(toastr.error).toHaveBeenCalledWith('Incompatible units: m3 and m');
+      expect(toastr.error).toHaveBeenCalledWith('Unit not recognized');
       expect(component.blur).toHaveBeenCalled();
     });
 
