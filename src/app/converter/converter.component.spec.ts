@@ -44,6 +44,18 @@ describe('ConverterComponent', () => {
     expect(spectator.component).toBeTruthy();
   });
 
+  it('has a title', () => {
+    expect(spectator.query('h1')).toHaveExactText('Easy Unit Converter');
+  });
+
+  it('has a byline', () => {
+    expect(spectator.query('p.lead')).toHaveText('by Notice Everything Creative');
+  });
+
+  it('links to our website', () => {
+    expect(spectator.query('.container a')).toContainProperty('href', 'https://noticeeverything.com');
+  });
+
   describe('keyboard shortcuts', () => {
 
     it('focuses the `from` field', () => {

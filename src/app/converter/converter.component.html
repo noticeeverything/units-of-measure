@@ -1,63 +1,75 @@
-<!-- Form -->
-<form (ngSubmit)="convert()" [formGroup]="convertForm">
-  <div class="md-form input-group">
+<!-- .container -->
+<div class="container pt-5 text-center">
+  <!-- Header -->
+  <h1>Easy Unit Converter</h1>
+  <p class="lead">
+    by <a href="https://noticeeverything.com" rel="noopener" target="_blank">Notice Everything Creative</a>
+  </p>
+  <!-- /Header -->
 
-    <div class="input-group-prepend">
+  <!-- Form -->
+  <form (ngSubmit)="convert()" [formGroup]="convertForm">
+    <div class="md-form input-group">
+
+      <div class="input-group-prepend">
                 <span class="input-group-text md-addon" id="material-addon1">
                     <mdb-icon class="fad" fab icon="calculator"></mdb-icon>
                 </span>
-    </div>
+      </div>
 
-    <!-- From Units -->
-    <label class="sr-only" for="from">from</label>
-    <input #fromField class="form-control" formControlName="from" id="from" name="from" placeholder="From"
-           type="text">
+      <!-- From Units -->
+      <label class="sr-only" for="from">from</label>
+      <input #fromField class="form-control" formControlName="from" id="from" name="from" placeholder="From"
+             type="text">
 
-    <!-- To Units -->
-    <label class="sr-only" for="to">from</label>
-    <input #toField class="form-control" formControlName="to" id="to" name="to" placeholder="To" type="text">
+      <!-- To Units -->
+      <label class="sr-only" for="to">from</label>
+      <input #toField class="form-control" formControlName="to" id="to" name="to" placeholder="To" type="text">
 
-    <!-- Buttons -->
-    <div class="input-group-append">
-      <!-- Calculate -->
-      <button [disabled]="!convertForm.valid"
-              class="m-0 px-3 py-2"
-              color="white"
-              mdbBtn
-              mdbWavesEffect
-              size="md"
-              type="submit">
-        <mdb-icon class="fad" fab icon="sign-in-alt"></mdb-icon>
-        <span class="sr-only">calculate</span>
-      </button>
-      <!-- Clear -->
-      <button (click)="clear()"
-              [disabled]="!(convertForm.controls.from.value && convertForm.controls.from.value.length) &&
+      <!-- Buttons -->
+      <div class="input-group-append">
+        <!-- Calculate -->
+        <button [disabled]="!convertForm.valid"
+                class="m-0 px-3 py-2"
+                color="white"
+                mdbBtn
+                mdbWavesEffect
+                size="md"
+                type="submit">
+          <mdb-icon class="fad" fab icon="sign-in-alt"></mdb-icon>
+          <span class="sr-only">calculate</span>
+        </button>
+        <!-- Clear -->
+        <button (click)="clear()"
+                [disabled]="!(convertForm.controls.from.value && convertForm.controls.from.value.length) &&
                              !(convertForm.controls.to.value && convertForm.controls.to.value.length)"
-              class="m-0 px-3 py-2"
-              color="white"
-              mdbBtn
-              mdbWavesEffect
-              size="md"
-              type="button">
-        <mdb-icon class="fad" fab icon="ban"></mdb-icon>
-        <span class="sr-only">clear</span>
-      </button>
-      <!-- /Buttons -->
+                class="m-0 px-3 py-2"
+                color="white"
+                mdbBtn
+                mdbWavesEffect
+                size="md"
+                type="button">
+          <mdb-icon class="fad" fab icon="ban"></mdb-icon>
+          <span class="sr-only">clear</span>
+        </button>
+        <!-- /Buttons -->
+      </div>
     </div>
+  </form>
+  <!-- /Form -->
+
+  <!-- Results -->
+  <div *ngIf="output" class="results p-1">
+    <code>{{ output }}</code>
   </div>
-</form>
-<!-- /Form -->
 
-<!-- Results -->
-<div *ngIf="output" class="results p-1">
-  <code>{{ output }}</code>
+  <!-- Modal Buttons -->
+  <a (click)="examplesModal.show()">examples</a>
+  &nbsp;
+  <a (click)="shortcutsModal.show()">shortcuts</a>
+
 </div>
-
-<!-- Modal Buttons -->
-<a (click)="examplesModal.show()">examples</a>
-&nbsp;
-<a (click)="shortcutsModal.show()">shortcuts</a>
+<!-- /.container -->
 
 <!-- ExamplesModal -->
 <div #examplesModal="mdbModal" aria-hidden="true" aria-labelledby="myBasicModalLabel" class="modal fade" mdbModal
