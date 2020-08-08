@@ -6,15 +6,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ConverterComponent} from './converter/converter.component';
 import {FooterComponent} from './footer/footer.component';
-import {
-  ButtonsModule,
-  IconsModule,
-  InputsModule,
-  ModalModule,
-  NavbarModule,
-  TooltipModule,
-  WavesModule
-} from 'angular-bootstrap-md';
+import {ButtonsModule, IconsModule, InputsModule, ModalModule, NavbarModule, TooltipModule, WavesModule} from 'angular-bootstrap-md';
 import {ToastrModule} from 'ngx-toastr';
 
 export const PlatformWindowToken = new InjectionToken('WINDOW');

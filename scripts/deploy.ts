@@ -32,7 +32,7 @@ import {deploySteps} from './steps';
     awsProfile = parsed.awsProfile;
     awsRegion = parsed.awsRegion;
     tag = parsed.tag;
-  // Interactive deployment - choose project(s), environment, etc.
+    // Interactive deployment - choose project(s), environment, etc.
   } else {
     const inquirer = new Inquirer();
     env = await inquirer.getEnvironment();
