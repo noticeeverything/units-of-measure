@@ -28,8 +28,14 @@ export class ConverterComponent {
   constructor(private formBuilder: FormBuilder, private toastr: ToastrService) {
   }
 
+  blur() {
+    [this.fromField.nativeElement, this.toField.nativeElement].forEach(i => i.blur());
+  }
+
+
   clear() {
     this.output = undefined;
+    this.blur();
     this.convertForm.reset();
   }
 
@@ -38,8 +44,11 @@ export class ConverterComponent {
     try {
       const qty: Qty = Qty(`${this.convertForm.get('from').value}`).to(this.convertForm.get('to').value);
       this.output = qty.toString();
+      this.blur();
+
     } catch (e) {
       this.toastr.error(e.message);
+      this.blur();
     }
   }
 
@@ -48,7 +57,7 @@ export class ConverterComponent {
     switch (ev.key) {
       case 'x':
         if (this.convertForm.dirty) {
-          [this.fromField.nativeElement, this.toField.nativeElement].forEach(i => i.blur());
+          this.blur();
           this.clear();
         }
         break;
