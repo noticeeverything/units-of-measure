@@ -1,5 +1,5 @@
 import {exec} from 'shelljs';
-import {logError} from '../shell-functions';
+import {logError} from './shell-functions';
 
 (async function gitTag() {
   const tag = process.argv[2];
@@ -10,7 +10,7 @@ import {logError} from '../shell-functions';
 
   // Stage deploy tag should look like <project>@stage
   // Prod tag should look like <project>@v0.0.0
-  const TAG_REGEX = /^(?:noticeeverything|spurlingguitars|playground|justinmcmahon|sfhistoricmaps)-(?:api|www|admin)@v\d\.\d\.\d$/;
+  const TAG_REGEX = /^@\d\.\d\.\d$/;
   if (!TAG_REGEX.test(tag)) {
     logError(`expected "${tag}" to follow the pattern <project>@<v<n.n.n>>`);
     process.exit(-1);
