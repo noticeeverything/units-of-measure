@@ -7,7 +7,6 @@
     "deploy": "ts-node --project scripts/tsconfig.deploy.json scripts/deploy.ts",
     "e2e": "ng e2e",
     "e2e.ci": "ng e2e --headless",
-    "git-tag": "ts-node --project scripts/tsconfig.deploy.json scripts/git-tag.ts",
     "lint": "ng lint",
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
