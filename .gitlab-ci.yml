@@ -1,34 +1,34 @@
-image: "noticeeverything/pipelines:latest"
+image: 'noticeeverything/pipelines:latest'
 
 stages:
-  - build
-  - test
+    - build
+    - test
 
 # to cache Cypress binary we use environment variables
 # to point at the folders we can list as paths in "cache" job settings
 variables:
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+    CYPRESS_CACHE_FOLDER: '$CI_PROJECT_DIR/cache/Cypress'
 
 cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - node_modules/
-    - .yarn
-    - cache/Cypress
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+        - node_modules/
+        - .yarn
+        - cache/Cypress
 
 install:
-  stage: build
-  script:
-    # this directory doesn't exist by default - likely has to do with how Gitlab clones the repo
-    # without this directory, transcrypt fails
-    - mkdir .git/hooks
-    - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
-    - yarn install --pure-lockfile --cache-folder .yarn
+    stage: build
+    script:
+        # this directory doesn't exist by default - likely has to do with how Gitlab clones the repo
+        # without this directory, transcrypt fails
+        - mkdir .git/hooks
+        - transcrypt -c $TRANSCRYPT_CIPHER -p $TRANSCRYPT_KEY -y
+        - yarn install --pure-lockfile --cache-folder .yarn
 
 # Test/lint all branches
 test:
-  stage: test
-  script:
-    - yarn lint
-    - yarn test.ci
-    - yarn e2e.ci
+    stage: test
+    script:
+        - yarn lint
+        - yarn test.ci
+        - yarn e2e.ci

@@ -1,15 +1,9 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "types": [
-      "inquirer",
-      "node"
-    ],
-    "target": "es2017",
-    "module": "commonjs"
-  },
-  "include": [
-    "deploy.ts",
-    "steps.ts"
-  ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "types": ["inquirer", "node"],
+        "target": "es2017",
+        "module": "commonjs"
+    },
+    "include": ["deploy.ts", "steps.ts"]
 }
