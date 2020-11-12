@@ -137,7 +137,7 @@
                     }
                 },
                 "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
+                    "builder": "@angular-devkit/build-angular:eslint",
                     "options": {
                         "tsConfig": [
                             "tsconfig.app.json",
@@ -158,6 +158,12 @@
                         "production": {
                             "devServerTarget": "units-of-measure:serve:production"
                         }
+                    }
+                },
+                "eslint": {
+                    "builder": "@angular-eslint/builder:lint",
+                    "options": {
+                        "lintFilePatterns": ["src/**/*.ts", "src/**/*.component.html"]
                     }
                 }
             }
