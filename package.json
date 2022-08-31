@@ -58,7 +58,7 @@
         "jest": "^26.1.0",
         "jest-preset-angular": "^8.2.1",
         "js-quantities": "^1.7.5",
-        "moment-timezone": "^0.5.31",
+        "moment-timezone": "^0.5.35",
         "ng-mocks": "^10.1.1",
         "ngx-toastr": "^13.0.0",
         "prettier": "^2.1.2",
